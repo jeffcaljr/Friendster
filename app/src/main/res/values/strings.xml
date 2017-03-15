@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">P4</string>
+    <string name="first_name_placeholder">First Name</string>
+    <string name="last_name_placeholder">Last Name</string>
+    <string name="email_placeholder">Email</string>
+    <string name="save_friend_button_text">Save</string>
+    <string name="delete_friend_button_text">Delete</string>
+</resources>
