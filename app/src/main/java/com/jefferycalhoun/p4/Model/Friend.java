@@ -1,5 +1,6 @@
 package com.jefferycalhoun.p4.Model;
 
+
 import java.io.Serializable;
 
 /**
@@ -11,6 +12,12 @@ public class Friend implements Serializable{
     private String firstName;
     private String lastName;
     private String emailAddress;
+
+    public Friend(String firstName, String lastName, String emailAddress) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.emailAddress = emailAddress;
+    }
 
     public Friend(int id, String firstName, String lastName, String emailAddress) {
         this.id = id;

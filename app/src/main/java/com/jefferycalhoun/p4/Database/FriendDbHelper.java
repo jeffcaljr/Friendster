@@ -1,4 +1,4 @@
-package com.jefferycalhoun.p4;
+package com.jefferycalhoun.p4.Database;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
