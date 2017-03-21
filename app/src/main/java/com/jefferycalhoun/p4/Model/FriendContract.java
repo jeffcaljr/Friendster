@@ -11,6 +11,7 @@ public class FriendContract {
     private FriendContract(){}
 
     public static class FriendEntry implements BaseColumns{
+        public static final String COLUMN_NAME_ID_FRIEND = "friend_id";
         public static final String COLUMN_NAME_FIRSTNAME = "first_name";
         public static final String COLUMN_NAME_LASTNAME = "last_name";
         public static final String COLUMN_NAME_EMAIL = "email";

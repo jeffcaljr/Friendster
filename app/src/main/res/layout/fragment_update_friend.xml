@@ -41,7 +41,7 @@
 
         <Button
             android:id="@+id/update_friend_button"
-            android:text="@string/save_friend_button_text"
+            android:text="@string/update_friend_button_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 

@@ -8,7 +8,7 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="9"
+        android:layout_weight="4"
         >
         <android.support.v7.widget.RecyclerView
             android:layout_width="match_parent" android:layout_height="wrap_content"
@@ -20,7 +20,7 @@
     <Button
         android:id="@+id/add_friend_button"
         android:text="@string/add_friend_button_text"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
         android:layout_gravity="center"/>

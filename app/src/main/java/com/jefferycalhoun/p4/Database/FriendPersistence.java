@@ -4,6 +4,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 
 import com.jefferycalhoun.p4.Model.Friend;
 import com.jefferycalhoun.p4.Model.FriendContract;
@@ -48,8 +49,17 @@ public class FriendPersistence {
             friendCursorWrapper.close();
         }
 
+//        for(Friend f: friends){
+//            Log.d("TAG", f.getFirstName() + ": id = " + f.getId());
+//        }
+
         return friends;
     }
+
+    public ArrayList<Friend> getFriends(){
+        return queryFriends(null, null);
+    }
+
 
     public void updateFriend(Friend friend){
 
@@ -79,7 +89,7 @@ public class FriendPersistence {
 
     public ContentValues getContentValues(Friend friend){
         ContentValues contentValues = new ContentValues();
-        contentValues.put(FriendContract.FriendEntry._ID, friend.getId());
+        contentValues.put(FriendContract.FriendEntry.COLUMN_NAME_ID_FRIEND, friend.getId());
         contentValues.put(FriendContract.FriendEntry.COLUMN_NAME_FIRSTNAME, friend.getFirstName());
         contentValues.put(FriendContract.FriendEntry.COLUMN_NAME_LASTNAME, friend.getLastName());
         contentValues.put(FriendContract.FriendEntry.COLUMN_NAME_EMAIL, friend.getEmailAddress());

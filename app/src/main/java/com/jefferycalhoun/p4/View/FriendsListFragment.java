@@ -11,7 +11,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.jefferycalhoun.p4.Database.FriendPersistence;
 import com.jefferycalhoun.p4.Model.Friend;
@@ -52,13 +51,14 @@ public class FriendsListFragment extends Fragment {
 
 
 
+
         return view;
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        Toast.makeText(getContext().getApplicationContext(), "Friendslist fragment resumed", Toast.LENGTH_SHORT).show();
+//        Toast.makeText(getContext().getApplicationContext(), "Friendslist fragment resumed", Toast.LENGTH_SHORT).show();
 
         updateFriendsList();
     }
@@ -86,7 +86,7 @@ public class FriendsListFragment extends Fragment {
     }
 
     public void updateFriendsList(){
-        friends = FriendPersistence.sharedInstance(getContext()).queryFriends(null, null);
+        friends = FriendPersistence.sharedInstance(getContext()).getFriends();
         recyclerViewAdapter.notifyDataSetChanged();
     }
 
@@ -94,7 +94,7 @@ public class FriendsListFragment extends Fragment {
         @Override
         public FriendHolder onCreateViewHolder(ViewGroup parent, int viewType) {
             LayoutInflater inflater = LayoutInflater.from(getActivity());
-            View view = inflater.inflate(R.layout.friend_list_item, parent, false);
+            View view = inflater.inflate(R.layout.friend_list_itemview, parent, false);
 
 
             return new FriendHolder(view);

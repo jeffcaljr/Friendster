@@ -16,6 +16,7 @@ public class FriendDbHelper extends SQLiteOpenHelper {
 
     private static final String SQL_CREATE_ENTRIES = "CREATE TABLE " + FriendContract.TABLE_NAME + " (" +
             FriendContract.FriendEntry._ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
+            FriendContract.FriendEntry.COLUMN_NAME_ID_FRIEND + " INTEGER, "+
             FriendContract.FriendEntry.COLUMN_NAME_FIRSTNAME + " TEXT," +
             FriendContract.FriendEntry.COLUMN_NAME_LASTNAME + " TEXT," +
             FriendContract.FriendEntry.COLUMN_NAME_EMAIL + " TEXT)";

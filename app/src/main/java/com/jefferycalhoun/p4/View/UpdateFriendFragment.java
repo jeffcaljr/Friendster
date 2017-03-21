@@ -19,6 +19,10 @@ import com.jefferycalhoun.p4.R;
 
 public class UpdateFriendFragment extends Fragment {
 
+    private static final String EXTRA_FIRST_NAME = "FIRST_NAME";
+    private static final String EXTRA_LAST_NAME = "FLAST_NAME";
+    private static final String EXTRA_EMAIL = "EMAIL";
+
     private Friend friend;
 
     private Button updateFriendButton;
@@ -32,13 +36,8 @@ public class UpdateFriendFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.update_friend_data, container, false);
+        View view = inflater.inflate(R.layout.fragment_update_friend, container, false);
 
-        Bundle args = getArguments();
-
-        if(args != null && args.containsKey("friend")){
-            friend = (Friend) args.getSerializable("friend");
-        }
 
         deleteFriendButton = (Button) view.findViewById(R.id.delete_friend_button);
         updateFriendButton = (Button) view.findViewById(R.id.update_friend_button);
@@ -46,10 +45,30 @@ public class UpdateFriendFragment extends Fragment {
         lastNameEditText = (EditText) view.findViewById(R.id.friend_last_name_textfield);
         emailEditText = (EditText) view.findViewById(R.id.friend_email_textfield);
 
-        if(friend != null){
-            firstNameEditText.setText(friend.getFirstName());
-            lastNameEditText.setText(friend.getLastName());
-            emailEditText.setText(friend.getEmailAddress());
+
+        if(savedInstanceState != null){
+            if(savedInstanceState.containsKey(EXTRA_FIRST_NAME)){
+                firstNameEditText.setText(savedInstanceState.getString(EXTRA_FIRST_NAME));
+            }
+            if(savedInstanceState.containsKey(EXTRA_LAST_NAME)){
+                lastNameEditText.setText(savedInstanceState.getString(EXTRA_LAST_NAME));
+            }
+            if(savedInstanceState.containsKey(EXTRA_EMAIL)){
+                emailEditText.setText(savedInstanceState.getString(EXTRA_EMAIL));
+            }
+        }
+        else{
+            Bundle args = getArguments();
+
+            if(args != null && args.containsKey("friend")){
+                friend = (Friend) args.getSerializable("friend");
+            }
+
+            if(friend != null){
+                firstNameEditText.setText(friend.getFirstName());
+                lastNameEditText.setText(friend.getLastName());
+                emailEditText.setText(friend.getEmailAddress());
+            }
         }
 
        deleteFriendButton.setOnClickListener(new DeleteFriendClickListener());
@@ -58,6 +77,18 @@ public class UpdateFriendFragment extends Fragment {
 
 
         return view;
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        String fName = firstNameEditText.getText().toString();
+        String lName = lastNameEditText.getText().toString();
+        String email = emailEditText.getText().toString();
+
+        outState.putString(EXTRA_FIRST_NAME, fName);
+        outState.putString(EXTRA_LAST_NAME, lName);
+        outState.putString(EXTRA_EMAIL, email);
     }
 
     @Override
@@ -90,11 +121,14 @@ public class UpdateFriendFragment extends Fragment {
             String lastName = lastNameEditText.getText().toString();
             String email = emailEditText.getText().toString();
 
-            friend = new Friend(firstName, lastName, email);
+            friend.setFirstName(firstName);
+            friend.setLastName(lastName);
+            friend.setEmailAddress(email);
 
             mListener.deleteFriendInitiated(friend);
         }
     }
+
 
     private class UpdateFriendClickListener implements View.OnClickListener{
         @Override
@@ -103,7 +137,9 @@ public class UpdateFriendFragment extends Fragment {
             String lastName = lastNameEditText.getText().toString();
             String email = emailEditText.getText().toString();
 
-            friend = new Friend(firstName, lastName, email);
+            friend.setFirstName(firstName);
+            friend.setLastName(lastName);
+            friend.setEmailAddress(email);
 
             mListener.updateFriendInitiated(friend);
         }

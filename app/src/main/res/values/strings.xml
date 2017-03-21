@@ -4,6 +4,7 @@
     <string name="last_name_placeholder">Last Name</string>
     <string name="email_placeholder">Email</string>
     <string name="save_friend_button_text">Save Friend</string>
+    <string name="update_friend_button_text">Update</string>
     <string name="add_friend_button_text">Add Friend</string>
     <string name="delete_friend_button_text">Delete Friend</string>
 </resources>
